@@ -19,7 +19,7 @@ services:
       postgres_pass: let-me-in
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
-      ethereum: 'mainnet:http://host.docker.internal:8545'
+      ethereum: 'soneium:https://soneium-minato.rpc.scs.startale.com?apikey=MTMwqry0P0CnqHPnLqmOqUsTxkiPa5ST'
       GRAPH_LOG: info
   ipfs:
     image: ipfs/kubo:v0.17.0
@@ -46,5 +46,7 @@ services:
       # workaround for https://github.com/docker/for-mac/issues/6270?
       PGDATA: "/var/lib/postgresql/data"
       POSTGRES_INITDB_ARGS: "-E UTF8 --locale=C"
+      ETHEREUM_REORG_THRESHOLD: 1
+      ETHEREUM_ANCESTOR_COUNT: 1
     volumes:
       - ./data/postgres:/var/lib/postgresql/data:Z
